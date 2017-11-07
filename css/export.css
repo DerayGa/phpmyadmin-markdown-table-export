@@ -1,0 +1,22 @@
+button.copyAsMarkdown {
+  cursor: pointer;
+  background-color:white;
+  border:none;
+  width:auto;
+  height:26px;
+}
+
+button.copyAsMarkdown:active {
+  transform: translateY(2px);
+}
+
+button.copyAsMarkdownMini {
+  cursor: pointer;
+  background-color:transparent;
+  border:none;
+  margin-left: 0px;
+}
+
+button.copyAsMarkdownMini:active {
+  transform: translateY(2px);
+}

@@ -1,0 +1,1 @@
+# phpMyAdmin - Markdown Table Export

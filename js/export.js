@@ -20,7 +20,7 @@ $(document).ready(() => {
         return;
       }
 
-      const exportButton = $(`<button class="copyAsMarkdown" data-clipboard-action="copy" data-clipboard-target="#markdownTable" style="${colorStyle}">${actionTxt}</button>`);
+      const exportButton = $(`<button class="copyAsMarkdown" data-clipboard-action="copy" data-clipboard-target="#markdownTable" style="${colorStyle}"><img class="icon ic_s_sync"> ${actionTxt}</button>`);
       $(elem).append(exportButton);
       new Clipboard('button.copyAsMarkdown');
       $(exportButton).click(exportResultToMarkdownTable);
@@ -28,13 +28,13 @@ $(document).ready(() => {
     });
 
     if (!thereIsExportButton) {
-      const legend = $('fieldset > legend');
+      const legend = $('fieldset > legend').last();
       if (legend) {
-        const lastSpan = $(legend[0]).parent().children().last();
+        const lastSpan = $(legend).parent().children().last();
         const lastSpanClass = $('a > span > img', lastSpan).attr('class');
         if (lastSpanClass && lastSpanClass.indexOf('ic_b_views')) {
 
-          const exportSpan = $(`<button class="copyAsMarkdownMini" data-clipboard-action="copy" data-clipboard-target="#markdownTable"><span class="nowrap" style="${colorStyle}"><img src="themes/dot.gif" title="${actionTxt}" class="icon ic_s_sync"> ${actionTxt}</span></button>`);
+          const exportSpan = $(`<button class="copyAsMarkdownMini" data-clipboard-action="copy" data-clipboard-target="#markdownTable"><span class="nowrap" style="${colorStyle}"><img class="icon ic_s_sync"> ${actionTxt}</span></button>`);
           $(legend[0]).parent().append(exportSpan);
           new Clipboard('button.copyAsMarkdownMini');
           $(exportSpan).click(exportResultToMarkdownTable);

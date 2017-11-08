@@ -1,7 +1,8 @@
 button.copyAsMarkdown {
   cursor: pointer;
   background-color:white;
-  border:none;
+  border-width:1px;
+  border-style:solid;
   width:auto;
   height:26px;
 }

@@ -12,6 +12,7 @@ $(document).ready(() => {
     const txtColor = (location.href.indexOf('/phpMyAdminProd/') > 0) ? '#CD5C5C' : '#377796';
     const colorStyle = `color:${txtColor};`;
     const actionTxt = 'Copy as markdown table';
+    const copiedTxt = 'Copied ヽ(●´∀`●)ﾉ';
     const navigationNodes = $('td.navigation_goto');
     let thereIsExportButton = false;
     $.each(navigationNodes, (idx, elem) => {
@@ -20,10 +21,17 @@ $(document).ready(() => {
         return;
       }
 
-      const exportButton = $(`<button class="copyAsMarkdown" data-clipboard-action="copy" data-clipboard-target="#markdownTable" style="${colorStyle}"><img class="icon ic_s_sync"> ${actionTxt}</button>`);
+      const exportButton = $(`<button class="copyAsMarkdown" data-clipboard-action="copy" data-clipboard-target="#markdownTable" style="${colorStyle}"><img class="icon ic_s_sync"> <span>${actionTxt}</span></button>`);
       $(elem).append(exportButton);
+      $(exportButton).css({width: $(exportButton).outerWidth()})
       new Clipboard('button.copyAsMarkdown');
       $(exportButton).click(exportResultToMarkdownTable);
+      $(exportButton).mousedown(() => {
+        $('span', exportButton).html(copiedTxt);
+      });
+      $(exportButton).mouseup(() => {
+        $('span', exportButton).html(actionTxt);
+      });
       thereIsExportButton = true;
     });
 
@@ -34,10 +42,17 @@ $(document).ready(() => {
         const lastSpanClass = $('a > span > img', lastSpan).attr('class');
         if (lastSpanClass && lastSpanClass.indexOf('ic_b_views')) {
 
-          const exportSpan = $(`<button class="copyAsMarkdownMini" data-clipboard-action="copy" data-clipboard-target="#markdownTable"><span class="nowrap" style="${colorStyle}"><img class="icon ic_s_sync"> ${actionTxt}</span></button>`);
-          $(legend[0]).parent().append(exportSpan);
-          new Clipboard('button.copyAsMarkdownMini');
-          $(exportSpan).click(exportResultToMarkdownTable);
+          const exportButton = $(`<button class="copyAsMarkdown" data-clipboard-action="copy" data-clipboard-target="#markdownTable"><img class="icon ic_s_sync"> <span class="nowrap" style="${colorStyle}">${actionTxt}</span></button>`);
+          $(legend[0]).parent().append(exportButton);
+          $(exportButton).css({width: $(exportButton).outerWidth()})
+          new Clipboard('button.copyAsMarkdown');
+          $(exportButton).click(exportResultToMarkdownTable);
+          $(exportButton).mousedown(() => {
+            $('span', exportButton).html(copiedTxt);
+          });
+          $(exportButton).mouseup(() => {
+            $('span', exportButton).html(actionTxt);
+          });
         }
       }
     }

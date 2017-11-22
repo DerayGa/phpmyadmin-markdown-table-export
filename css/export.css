@@ -1,23 +1,20 @@
 button.copyAsMarkdown {
   cursor: pointer;
-  background-color:white;
-  border-width:1px;
-  border-style:solid;
-  width:auto;
-  height:26px;
+  border: none;
+  text-align: left;
 }
 
 button.copyAsMarkdown:active {
-  transform: translateY(2px);
+  transform: translateY(1px);
 }
 
-button.copyAsMarkdownMini {
-  cursor: pointer;
-  background-color:transparent;
-  border:none;
+td.navigation_goto button.copyAsMarkdown {
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+}
+
+fieldset button.copyAsMarkdown {
+  background-color: transparent;
   margin-left: 0px;
-}
-
-button.copyAsMarkdownMini:active {
-  transform: translateY(2px);
 }

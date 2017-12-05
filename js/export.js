@@ -79,7 +79,7 @@ $(document).ready(() => {
         const tmp = dataNodes.slice(i, i + headers.length);
         row = [];
         $.each(tmp, (idx, elem) => {
-          const value = $(elem).text().trim();
+          const value = $(elem).text().replace(/\n/g, " ").trim();
           if (value.length > maxLengths[idx]) {
             maxLengths[idx] = value.length;
           }

@@ -25,7 +25,6 @@ $(document).ready(() => {
       $(elem).append(exportButton);
       $(exportButton).css({width: $(exportButton).outerWidth()})
       new Clipboard('button.copyAsMarkdown');
-      $(exportButton).click(exportResultToMarkdownTable);
       $(exportButton).mousedown(() => {
         $('span', exportButton).html(copiedTxt);
       });
@@ -46,7 +45,6 @@ $(document).ready(() => {
           $(legend[0]).parent().append(exportButton);
           $(exportButton).css({width: $(exportButton).outerWidth()})
           new Clipboard('button.copyAsMarkdown');
-          $(exportButton).click(exportResultToMarkdownTable);
           $(exportButton).mousedown(() => {
             $('span', exportButton).html(copiedTxt);
           });
@@ -60,10 +58,10 @@ $(document).ready(() => {
     if ($('textarea#markdownTable', tableNode).length === 0) {
       resultTextArea = $('<textarea id="markdownTable" style="width:1px;height:1px"></textarea>');
       $(tableNode).append(resultTextArea);
+      exportResultToMarkdownTable();
     }
   }
 
-// style="width:1px;height:1px;"
   function exportResultToMarkdownTable () {
     const headerNodes = $('thead > tr > th.draggable', tableNode);
     const dataNodes = $('tbody > tr > td.data', tableNode);

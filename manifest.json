@@ -3,7 +3,7 @@
 
   "name": "phpMyAdmin - Markdown Table Export",
   "description": "Export query result from phpMyAdmin as markdown table",
-  "version": "1.7",
+  "version": "1.8",
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
   "icons": {
     "16": "icons/icon16.png",
@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*/*phpMyAdmin*/*"
+        "*://*/*"
       ],
       "js": ["./js/jquery.min.js", "./js/clipboard.min.js", "./js/export.js"],
       "css": ["./css/export.css"]
